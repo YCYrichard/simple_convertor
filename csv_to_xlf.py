@@ -50,9 +50,10 @@ def create_xlf_file(input_file, output_file, target_lang):
         source_elem = ET.SubElement(trans_unit, 'source')
         source_elem.text = row[source_idx]
 
-        # Add the target element
-        target_elem = ET.SubElement(trans_unit, 'target')
-        target_elem.text = row[target_idx]
+        # Add the target element only if the target text is not empty
+        if row[target_idx].strip():  # Check if target is not empty
+            target_elem = ET.SubElement(trans_unit, 'target')
+            target_elem.text = row[target_idx]
 
     # Write the XML tree to the output file with proper indentation
     xml_string = ET.tostring(root, encoding='utf-8', xml_declaration=True)
