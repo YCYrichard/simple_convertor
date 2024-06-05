@@ -13,7 +13,7 @@ def create_xlf_file(input_file, output_file, target_lang):
         target_lang (str): Target language code.
     """
     # Open the CSV file
-    with open(input_file, 'r', encoding='utf-8') as csvfile:
+    with open(input_file, 'r', encoding='utf-8-sig') as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)
 
