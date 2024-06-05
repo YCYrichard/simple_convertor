@@ -17,12 +17,13 @@ def create_xlf_file(input_file, output_file, target_lang):
         reader = csv.reader(csvfile)
         data = list(reader)
 
-    # Extract header row and find column indices
+    # Extract header row and find column indices (case insensitive)
     header = data[0]
-    id_idx = header.index('id')
-    resname_idx = header.index('resname')
-    source_idx = header.index('source')
-    target_idx = header.index('target')
+    header_lower = [col.lower() for col in header]
+    id_idx = header_lower.index('id')
+    resname_idx = header_lower.index('resname')
+    source_idx = header_lower.index('source')
+    target_idx = header_lower.index('target')
 
     # Create the root element
     root = ET.Element('xliff')
